@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div></div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import "./assets/css/nucleo-icons.css"
+import "./assets/css/nucleo-svg.css"
+import "perfect-scrollbar/dist/perfect-scrollbar"
+import "smooth-scrollbar/dist/smooth-scrollbar"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  @import "@/assets/scss/soft-ui-dashboard.scss";
 </style>
