@@ -5,7 +5,7 @@ import PricePlanPage from "@/components/page/PricePlanPage";
 import WorkoutPage from "@/components/page/WorkoutPage";
 import App from './components/App'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUsers, faCreditCard, faList } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faCreditCard, faList, faPersonBiking } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const routes = [
@@ -21,7 +21,7 @@ const router = createRouter({
     routes, // short for `routes: routes`
 })
 
-library.add(faUsers, faCreditCard, faList)
+library.add(faUsers, faCreditCard, faList, faPersonBiking)
 
 createApp(App)
     .use(router)
