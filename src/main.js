@@ -4,11 +4,14 @@ import StudentsPage from "@/components/page/StudentsPage";
 import PricePlanPage from "@/components/page/PricePlanPage";
 import WorkoutPage from "@/components/page/WorkoutPage";
 import App from './components/App'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUsers, faCreditCard, faList } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const routes = [
-    { path: '/student', component: StudentsPage },
-    { path: '/price', component: PricePlanPage },
-    { path: '/workout', component: WorkoutPage },
+    { path: '/student', component: StudentsPage, name: 'student' },
+    { path: '/price', component: PricePlanPage, name: 'price' },
+    { path: '/workout', component: WorkoutPage, name: 'workout' },
     { path: '/', redirect: '/student' }
 ]
 
@@ -18,6 +21,9 @@ const router = createRouter({
     routes, // short for `routes: routes`
 })
 
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+library.add(faUsers, faCreditCard, faList)
+
+createApp(App)
+    .use(router)
+    .component("font-awesome-icon", FontAwesomeIcon)
+    .mount('#app')
