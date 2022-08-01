@@ -1,6 +1,6 @@
 <script>
-import PageTemplate from './PageTemplate'
-import ListItems from "@/components/ListItems";
+import PageTemplate from '../lib/PageTemplate.vue'
+import ListItems from "../lib/ListItems.vue";
 
 export default {
   name: "StudentsPage",
