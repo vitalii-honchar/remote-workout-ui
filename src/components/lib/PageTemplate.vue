@@ -1,10 +1,4 @@
 <script>
-import "../../assets/css/nucleo-icons.css"
-import "../../assets/css/nucleo-svg.css"
-import "perfect-scrollbar/dist/perfect-scrollbar"
-import "smooth-scrollbar/dist/smooth-scrollbar"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap"
 import SideBar from "@/components/lib/SideBar";
 import NavBar from "@/components/lib/NavBar";
 
@@ -44,7 +38,3 @@ export default {
     </div>
   </main>
 </template>
-
-<style lang="scss">
-@import "@/assets/scss/soft-ui-dashboard.scss";
-</style>
