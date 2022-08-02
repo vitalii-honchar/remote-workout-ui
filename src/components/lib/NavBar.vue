@@ -1,6 +1,20 @@
 <script>
+import {inject} from "vue"
+
 export default {
-  name: "NavBar"
+  name: "NavBar",
+
+  created() {
+    this.authenticationService = inject('authenticationService')
+  },
+
+  methods: {
+
+    async handleLogOut() {
+      await this.authenticationService.logout()
+      this.$router.push({ name: 'login' })
+    }
+  }
 }
 </script>
 
@@ -12,9 +26,9 @@ export default {
         <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
         <ul class="navbar-nav justify-content-end">
           <li class="nav-item d-flex align-items-center">
-            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+            <a @click="handleLogOut" href="javascript:;" class="nav-link text-body font-weight-bold px-0">
               <font-awesome-icon icon="right-from-bracket" />
-              <span class="d-sm-inline d-none"> Sign Out</span>
+              <span class="d-sm-inline d-none"> Log Out</span>
             </a>
           </li>
         </ul>
