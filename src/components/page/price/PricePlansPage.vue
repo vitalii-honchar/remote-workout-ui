@@ -1,6 +1,6 @@
 <script>
-import PageTemplate from '../lib/PageTemplate.vue'
-import ListItems from "../lib/ListItems.vue";
+import PageTemplate from '../../lib/PageTemplate.vue'
+import ListItems from "../../lib/ListItems.vue";
 import {inject} from "vue"
 
 export default {
