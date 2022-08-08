@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import StudentsPage from "@/components/page/StudentsPage";
-import PricePlanPage from "@/components/page/PricePlanPage";
+import PricePlanPage from "@/components/page/PricePlansPage";
 import WorkoutPage from "@/components/page/WorkoutPage";
 import App from './components/App'
 import { library } from '@fortawesome/fontawesome-svg-core'
