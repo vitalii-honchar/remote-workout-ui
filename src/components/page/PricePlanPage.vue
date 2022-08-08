@@ -1,6 +1,7 @@
 <script>
 import PageTemplate from '../lib/PageTemplate.vue'
 import ListItems from "../lib/ListItems.vue";
+import {inject} from "vue"
 
 export default {
   name: "PricePlanPage",
@@ -10,18 +11,18 @@ export default {
   },
   data() {
     return {
-      pricePlans: [
-        { name: "Cheap Price Plan", id: "123" },
-        { name: "Expensive Price Plan", id: "123" },
-        { name: "Individual Price Plan", id: "123" },
-      ]
+      pricePlans: []
     }
   },
+  async created() {
+    const pricePlanService = inject('pricePlanService')
+    this.pricePlans = await pricePlanService.getPricePlans()
+  }
 }
 </script>
 
 <template>
   <page-template title="Price Plan">
-    <list-items :headers="{name: 'Price Plan'}" :values="pricePlans"></list-items>
+    <list-items :headers="{name: 'Plan', price: 'Price $', workouts: 'Workouts'}" :values="pricePlans" />
   </page-template>
 </template>
