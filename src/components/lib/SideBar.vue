@@ -31,7 +31,7 @@ export default {
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link class="nav-link" :class="{ active: studentsItemActive }" to="/">
+          <router-link class="nav-link" :class="{ active: studentsItemActive }" :to='{ name: "student" }'>
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -51,7 +51,7 @@ export default {
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :class="{ active: workoutsItemActive }" to="/workout">
+          <router-link class="nav-link" :class="{ active: workoutsItemActive }" :to='{ name: "workout" }'>
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -71,7 +71,7 @@ export default {
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :class="{ active: pricePlanItemActive }" to="/price">
+          <router-link class="nav-link" :class="{ active: pricePlanItemActive }" :to='{ name: "prices" }'>
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

@@ -21,7 +21,6 @@ const pricePlanService = (apiService) => {
 
         async updatePricePlan(pricePlan) {
             pricePlan.validate()
-            console.log(`Update price plan: pricePlan = ${pricePlan}`)
             return apiService.post(`${PRICE_PLAN_ENDPOINT}/${encodeURIComponent(pricePlan.name)}`, pricePlan)
         },
     }

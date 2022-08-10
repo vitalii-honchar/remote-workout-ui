@@ -19,10 +19,7 @@ export default {
       const authenticationService = inject('authenticationService')
       const authorized = await authenticationService.isAuthorized()
       if (!authorized) {
-        console.log('Unauthorized ')
         this.$router.push({ name: 'login' })
-      } else {
-        this.$router.push({ name: 'index' })
       }
     }
   }

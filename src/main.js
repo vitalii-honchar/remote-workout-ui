@@ -16,8 +16,8 @@ import pricePlanService from "@/service/frontend/price-plan-service.mjs"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'student' },
-    { path: '/price', component: PricePlansPage, name: 'prices' },
     { path: '/price/:name', component: PricePlanPage, name: 'price' },
+    { path: '/price', component: PricePlansPage, name: 'prices' },
     { path: '/workout', component: WorkoutPage, name: 'workout' },
     { path: '/login', component: LoginPage, name: 'login' },
     { path: '/', redirect: '/student', name: 'index' },
