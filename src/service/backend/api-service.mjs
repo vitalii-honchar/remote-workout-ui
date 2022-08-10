@@ -65,6 +65,20 @@ const apiService = (url, authorizationStore) => {
             const authorizationData = authorizationStore.get()
             const result = await fetch(`${url}/${endpoint}`, fetchOptions('PUT', authorizationData, body))
             return await getResponseBody(result)
+        },
+
+        async delete(endpoint) {
+            const authorizationData = authorizationStore.get()
+            const result = await fetch(
+                `${url}/${endpoint}`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Basic ${authorizationData}`
+                    }
+                }
+            )
+            return await getResponseBody(result)
         }
     }
 }

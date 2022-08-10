@@ -27,7 +27,15 @@ export default {
         await this.pricePlanService.updatePricePlan(this.pricePlan)
         this.successMessage = "Price plan was successfully updated"
       } catch (e) {
-        console.info(e)
+        this.errorMessage = e.message
+      }
+    },
+
+    async handleDeletePricePlan() {
+      try {
+        await this.pricePlanService.deletePricePlan(this.pricePlan)
+        this.$router.push({ name: 'prices' })
+      } catch (e) {
         this.errorMessage = e.message
       }
     }
@@ -37,7 +45,11 @@ export default {
 
 <template>
   <page-template title="Update Price Plan">
-    <form-template @submitted="handleSavePricePlan" submitButtonName="Save" :errorMessage="errorMessage"
+    <form-template @submitted="handleSavePricePlan"
+                   @deleted="handleDeletePricePlan"
+                   submit-button-name="Save"
+                   delete-button-name="Delete"
+                   :errorMessage="errorMessage"
                    :successMessage="successMessage">
       <div class="form-group">
         <label for="example-text-input" class="form-control-label">Name</label>

@@ -28,6 +28,10 @@ const pricePlanService = (apiService) => {
             pricePlan.validate()
             return apiService.put(`${PRICE_PLAN_ENDPOINT}`, pricePlan)
         },
+
+        async deletePricePlan(pricePlan) {
+            return apiService.delete(`${PRICE_PLAN_ENDPOINT}/${encodeURIComponent(pricePlan.name)}`)
+        }
     }
 }
 
