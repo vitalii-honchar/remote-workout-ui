@@ -14,14 +14,14 @@ export default class PricePlan {
     }
 
     validate() {
-        if (isNaN(this.workouts)) {
-            throw new ValidationError("Workouts must be a number")
-        }
-        if (isNaN(this.price)) {
-            throw new ValidationError("Price must be a number")
-        }
         if (!this.name) {
             throw new ValidationError("Name must be specified")
+        }
+        if (!this.price || isNaN(this.price)) {
+            throw new ValidationError("Price must be a number")
+        }
+        if (!this.workouts || isNaN(this.workouts)) {
+            throw new ValidationError("Workouts must be a number")
         }
     }
 }

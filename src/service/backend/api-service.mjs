@@ -22,6 +22,21 @@ const apiService = (url, authorizationStore) => {
         return await response.json()
     }
 
+    const createHeaders = (authorizationData) => {
+        return {
+            'Authorization': `Basic ${authorizationData}`,
+            'Content-Type': 'application/json'
+        }
+    }
+
+    const fetchOptions = (method, authorizationData, body) => {
+        return {
+            method: method,
+            headers: createHeaders(authorizationData),
+            body: JSON.stringify(body)
+        }
+    }
+
     return {
         async get(endpoint, authorizationData = null) {
             if (authorizationData === null) {
@@ -42,18 +57,13 @@ const apiService = (url, authorizationStore) => {
 
         async post(endpoint, body) {
             const authorizationData = authorizationStore.get()
+            const result = await fetch(`${url}/${endpoint}`, fetchOptions('POST', authorizationData, body))
+            return await getResponseBody(result)
+        },
 
-            const result = await fetch(
-                `${url}/${endpoint}`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Basic ${authorizationData}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                }
-            )
+        async put(endpoint, body) {
+            const authorizationData = authorizationStore.get()
+            const result = await fetch(`${url}/${endpoint}`, fetchOptions('PUT', authorizationData, body))
             return await getResponseBody(result)
         }
     }

@@ -4,16 +4,29 @@ import NavBar from "@/components/lib/NavBar";
 
 export default {
   name: "PageTemplate",
+  components: {
+    SideBar,
+    NavBar
+  },
   props: {
     title: String,
+    withAddButton: {
+      type: Boolean,
+      default() {
+        return false
+      }
+    },
     contentClasses: {
       type: String,
       default: () => "col-lg-12 col-md-12"
     }
   },
-  components: {
-    SideBar,
-    NavBar
+  emits: ["addClicked"],
+  methods: {
+
+    handleAdd() {
+      this.$emit('addClicked')
+    }
   }
 }
 </script>
@@ -30,6 +43,12 @@ export default {
               <div class="row">
                 <div class="col-lg-6 col-7">
                   <h6>{{ title }}</h6>
+                </div>
+                <div class="ms-auto col-2" v-show="withAddButton">
+                  <button class="btn btn-outline-success btn-sm mb-0" @click="handleAdd">
+                    <font-awesome-icon icon="plus"/>
+                    <span> Add</span>
+                  </button>
                 </div>
               </div>
             </div>

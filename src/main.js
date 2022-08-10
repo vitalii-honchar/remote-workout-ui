@@ -2,11 +2,12 @@ import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import StudentsPage from "@/components/page/StudentsPage";
 import PricePlansPage from "@/components/page/price/PricePlansPage";
-import PricePlanPage from "@/components/page/price/PricePlanPage";
+import UpdatePricePlanPage from "@/components/page/price/UpdatePricePlanPage";
+import CreatePricePlanPage from "@/components/page/price/CreatePricePlanPage";
 import WorkoutPage from "@/components/page/WorkoutPage";
 import App from './components/App'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUsers, faCreditCard, faList, faPersonBiking, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faUsers, faCreditCard, faList, faPersonBiking, faRightFromBracket, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import authorizationService from './service/frontend/authentication-service.mjs'
 import createAuthorizationStore from "@/service/frontend/authentication-store.mjs"
@@ -16,7 +17,8 @@ import pricePlanService from "@/service/frontend/price-plan-service.mjs"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'student' },
-    { path: '/price/:name', component: PricePlanPage, name: 'price' },
+    { path: '/price/:name', component: UpdatePricePlanPage, name: 'price' },
+    { path: '/price-create', component: CreatePricePlanPage, name: 'price-create' },
     { path: '/price', component: PricePlansPage, name: 'prices' },
     { path: '/workout', component: WorkoutPage, name: 'workout' },
     { path: '/login', component: LoginPage, name: 'login' },
@@ -29,7 +31,7 @@ const router = createRouter({
     routes, // short for `routes: routes`
 })
 
-library.add(faUsers, faCreditCard, faList, faPersonBiking, faRightFromBracket)
+library.add(faUsers, faCreditCard, faList, faPersonBiking, faRightFromBracket, faPlus)
 
 const authorizationStore = createAuthorizationStore(document)
 const apiService = createApiService('/api', authorizationStore)

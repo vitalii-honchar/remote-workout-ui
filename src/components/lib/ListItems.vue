@@ -9,7 +9,8 @@ export default {
     handleEdit(value) {
       this.$emit('edit', value)
     }
-  }
+  },
+  emits: ["edit", "create"]
 }
 </script>
 

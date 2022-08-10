@@ -23,6 +23,11 @@ const pricePlanService = (apiService) => {
             pricePlan.validate()
             return apiService.post(`${PRICE_PLAN_ENDPOINT}/${encodeURIComponent(pricePlan.name)}`, pricePlan)
         },
+
+        async createPricePlan(pricePlan) {
+            pricePlan.validate()
+            return apiService.put(`${PRICE_PLAN_ENDPOINT}`, pricePlan)
+        },
     }
 }
 

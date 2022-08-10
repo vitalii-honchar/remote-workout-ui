@@ -27,13 +27,19 @@ export default {
           name: pricePlan.name
         }
       })
+    },
+
+    handleAddPricePlan() {
+      this.$router.push({
+        name: 'price-create',
+      })
     }
   }
 }
 </script>
 
 <template>
-  <page-template title="Prices Plan">
+  <page-template title="Prices Plan" :with-add-button="true" @add-clicked="handleAddPricePlan">
     <list-items
         :headers="{name: 'Plan', price: 'Price $', workouts: 'Workouts'}"
         :values="pricePlans"

@@ -5,7 +5,7 @@ import {inject} from "vue"
 import PricePlan from "@/domain/price-plan.mjs"
 
 export default {
-  name: "PricePlanPage",
+  name: "CreatePricePlanPage",
   components: {
     PageTemplate,
     FormTemplate
@@ -19,13 +19,14 @@ export default {
   },
   async created() {
     this.pricePlanService = inject('pricePlanService')
-    this.pricePlan = await this.pricePlanService.getPricePlan(this.$route.params.name)
   },
   methods: {
     async handleSavePricePlan() {
       try {
-        await this.pricePlanService.updatePricePlan(this.pricePlan)
-        this.successMessage = "Price plan was successfully updated"
+        await this.pricePlanService.createPricePlan(this.pricePlan)
+        this.$router.push({
+          name: 'prices',
+        })
       } catch (e) {
         console.info(e)
         this.errorMessage = e.message
@@ -36,8 +37,8 @@ export default {
 </script>
 
 <template>
-  <page-template title="Price Plan">
-    <form-template @submitted="handleSavePricePlan" submitButtonName="Save" :errorMessage="errorMessage"
+  <page-template title="Update Price Plan">
+    <form-template @submitted="handleSavePricePlan" submitButtonName="Create" :errorMessage="errorMessage"
                    :successMessage="successMessage">
       <div class="form-group">
         <label for="example-text-input" class="form-control-label">Name</label>
