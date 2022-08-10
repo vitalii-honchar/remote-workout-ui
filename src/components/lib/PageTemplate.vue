@@ -5,7 +5,11 @@ import NavBar from "@/components/lib/NavBar";
 export default {
   name: "PageTemplate",
   props: {
-    title: String
+    title: String,
+    contentClasses: {
+      type: String,
+      default: () => "col-lg-12 col-md-12"
+    }
   },
   components: {
     SideBar,
@@ -20,7 +24,7 @@ export default {
     <nav-bar></nav-bar>
     <div class="container-fluid">
       <div class="row my-2">
-        <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
+        <div :class='[contentClasses, "mb-md-0 mb-4"]'>
           <div class="card">
             <div class="card-header pb-0">
               <div class="row">

@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import StudentsPage from "@/components/page/StudentsPage";
-import PricePlanPage from "@/components/page/price/PricePlansPage";
+import PricePlansPage from "@/components/page/price/PricePlansPage";
+import PricePlanPage from "@/components/page/price/PricePlanPage";
 import WorkoutPage from "@/components/page/WorkoutPage";
 import App from './components/App'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -15,7 +16,8 @@ import pricePlanService from "@/service/frontend/price-plan-service.mjs"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'student' },
-    { path: '/price', component: PricePlanPage, name: 'price' },
+    { path: '/price', component: PricePlansPage, name: 'prices' },
+    { path: '/price/:name', component: PricePlanPage, name: 'price' },
     { path: '/workout', component: WorkoutPage, name: 'workout' },
     { path: '/login', component: LoginPage, name: 'login' },
     { path: '/', redirect: '/student', name: 'index' },

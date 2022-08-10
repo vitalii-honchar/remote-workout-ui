@@ -3,7 +3,12 @@ export default {
   name: "ListItems",
   props: {
     headers: Object,
-    values: Array[Object]
+    values: Array[Object],
+  },
+  methods: {
+    handleEdit(value) {
+      this.$emit('edit', value)
+    }
   }
 }
 </script>
@@ -29,7 +34,7 @@ export default {
           </div>
         </td>
         <td class="align-middle">
-          <button class="btn btn-outline-primary btn-sm mb-0">Edit</button>
+          <button class="btn btn-outline-primary btn-sm mb-0" @click="() => handleEdit(value)">Edit</button>
         </td>
       </tr>
       </tbody>

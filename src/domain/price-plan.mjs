@@ -1,3 +1,4 @@
+import {ValidationError} from "@/domain/errors.mjs"
 
 export default class PricePlan {
 
@@ -6,5 +7,21 @@ export default class PricePlan {
         this.name = name
         this.price = price
         this.workouts = workouts
+    }
+
+    toString() {
+        return `PricePlan(coach="${this.coach}", name="${this.name}", price=${this.price}, workouts=${this.workouts})`
+    }
+
+    validate() {
+        if (isNaN(this.workouts)) {
+            throw new ValidationError("Workouts must be a number")
+        }
+        if (isNaN(this.price)) {
+            throw new ValidationError("Price must be a number")
+        }
+        if (!this.name) {
+            throw new ValidationError("Name must be specified")
+        }
     }
 }

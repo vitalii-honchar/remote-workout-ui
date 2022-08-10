@@ -4,13 +4,13 @@ export default {
 
   computed: {
     studentsItemActive() {
-      return this.$route.name === 'student'
+      return this.$route.name.startsWith('student')
     },
     workoutsItemActive() {
-      return this.$route.name === 'workout'
+      return this.$route.name.startsWith('workout')
     },
     pricePlanItemActive() {
-      return this.$route.name === 'price'
+      return this.$route.name.startsWith('price')
     }
   }
 }

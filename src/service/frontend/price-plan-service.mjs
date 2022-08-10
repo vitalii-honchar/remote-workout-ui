@@ -12,7 +12,18 @@ const pricePlanService = (apiService) => {
         async getPricePlans() {
             const pricePlansJson = await apiService.get(PRICE_PLAN_ENDPOINT)
             return pricePlansJson.map(r => createPricePlan(r))
-        }
+        },
+
+        async getPricePlan(name) {
+            const pricePlanJson = await apiService.get(`${PRICE_PLAN_ENDPOINT}/${encodeURIComponent(name)}`)
+            return createPricePlan(pricePlanJson)
+        },
+
+        async updatePricePlan(pricePlan) {
+            pricePlan.validate()
+            console.log(`Update price plan: pricePlan = ${pricePlan}`)
+            return apiService.post(`${PRICE_PLAN_ENDPOINT}/${encodeURIComponent(pricePlan.name)}`, pricePlan)
+        },
     }
 }
 
