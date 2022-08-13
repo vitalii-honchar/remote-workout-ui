@@ -9,6 +9,7 @@ export default {
     PageTemplate,
     ListItems
   },
+
   data() {
     return {
       workouts: []
@@ -18,12 +19,21 @@ export default {
   async created() {
     const workoutService = inject('workoutService')
     this.workouts = await workoutService.getWorkouts()
+  },
+
+  methods: {
+
+    handleAddWorkout() {
+      this.$router.push({
+        name: 'workout-create'
+      })
+    }
   }
 }
 </script>
 
 <template>
-  <page-template title="Workout">
+  <page-template title="Workout" :with-add-button="true" @add-clicked="handleAddWorkout">
     <list-items
         :headers="{name: 'Workout', description: 'Description'}"
         :values="workouts"

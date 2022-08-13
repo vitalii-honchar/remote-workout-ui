@@ -21,6 +21,9 @@ class Workout {
         if (!this.description) {
             throw new ValidationError("Description must be specified")
         }
+        if (!this.videos || this.videos.length === 0) {
+            throw new ValidationError("Videos can't be empty, please add at least one video")
+        }
         this.videos.forEach(it => it.validate())
     }
 }

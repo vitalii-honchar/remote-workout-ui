@@ -14,6 +14,11 @@ const workoutService = (apiService) => {
         async getWorkouts() {
             const workoutsJson = await apiService.get(WORKOUT_ENDPOINT)
             return workoutsJson.map(r => createWorkout(r))
+        },
+
+        async createWorkout(workout) {
+            workout.validate()
+            return apiService.put(WORKOUT_ENDPOINT, workout)
         }
     }
 }
