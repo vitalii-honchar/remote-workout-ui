@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dockerBuild": "docker build -t weaxme/pet-project:remote-workout-ui-1.0.0 ."
+    "dockerBuild": "docker build -t weaxme/pet-project:remote-workout-ui-$npm_package_version.$(git rev-list HEAD --count) ."
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
