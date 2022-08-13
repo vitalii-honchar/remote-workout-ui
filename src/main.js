@@ -14,6 +14,7 @@ import createAuthorizationStore from "@/service/frontend/authentication-store.mj
 import createApiService from "@/service/backend/api-service.mjs"
 import LoginPage from "@/components/page/LoginPage";
 import pricePlanService from "@/service/frontend/price-plan-service.mjs"
+import workoutService from "@/service/frontend/workout-service.mjs"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'student' },
@@ -41,4 +42,5 @@ createApp(App)
     .component("font-awesome-icon", FontAwesomeIcon)
     .provide('authenticationService', authorizationService(authorizationStore, apiService))
     .provide('pricePlanService', pricePlanService(apiService))
+    .provide('workoutService', workoutService(apiService))
     .mount('#app')
