@@ -26,6 +26,10 @@ const workoutService = (apiService) => {
             return apiService.put(WORKOUT_ENDPOINT, workout)
         },
 
+        async deleteWorkout(workout) {
+            return apiService.delete(`${WORKOUT_ENDPOINT}/${encodeURIComponent(workout.id)}`)
+        },
+
         async updateWorkout(workout) {
             workout.validate()
             return apiService.post(`${WORKOUT_ENDPOINT}/${encodeURIComponent(workout.id)}`, workout)

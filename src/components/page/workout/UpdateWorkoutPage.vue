@@ -40,6 +40,16 @@ export default {
       }
     },
 
+    async handleDeleteWorkout() {
+      try {
+        await this.workoutService.deleteWorkout(this.workout)
+        this.$router.push({ name: 'workouts' })
+      } catch (e) {
+        this.successMessage = null
+        this.errorMessage = e.message
+      }
+    },
+
     handleUpdateVideos(videos) {
       this.workout.videos = videos
     }
@@ -51,7 +61,9 @@ export default {
   <page-template title="Update Workout">
     <form-template
         @submitted="handleSaveWorkout"
+        @deleted="handleDeleteWorkout"
         submit-button-name="Save"
+        delete-button-name="Delete"
         :error-message="errorMessage"
         :success-message="successMessage"
         :key="this.workout"
