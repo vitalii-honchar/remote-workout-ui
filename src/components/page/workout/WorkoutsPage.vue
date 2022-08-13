@@ -1,9 +1,9 @@
 <script>
-import PageTemplate from '../lib/PageTemplate.vue'
-import ListItems from "../lib/ListItems.vue";
+import PageTemplate from '../../lib/PageTemplate.vue'
+import ListItems from "../../lib/ListItems.vue";
 
 export default {
-  name: "WorkoutPage",
+  name: "WorkoutsPage",
   components: {
     PageTemplate,
     ListItems
