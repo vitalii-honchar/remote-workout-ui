@@ -27,6 +27,15 @@ export default {
       this.$router.push({
         name: 'workout-create'
       })
+    },
+
+    editParameters(workout) {
+      this.$router.push({
+        name: 'workout',
+        params: {
+          id: workout.id
+        }
+      })
     }
   }
 }
@@ -37,6 +46,7 @@ export default {
     <list-items
         :headers="{name: 'Workout', description: 'Description'}"
         :values="workouts"
+        @edit="editParameters"
     />
   </page-template>
 </template>

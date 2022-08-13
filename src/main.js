@@ -6,6 +6,7 @@ import UpdatePricePlanPage from "@/components/page/price/UpdatePricePlanPage";
 import CreatePricePlanPage from "@/components/page/price/CreatePricePlanPage";
 import WorkoutsPage from "@/components/page/workout/WorkoutsPage";
 import CreateWorkoutPage from "@/components/page/workout/CreateWorkoutPage";
+import UpdateWorkoutPage from "@/components/page/workout/UpdateWorkoutPage";
 import App from './components/App'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUsers, faCreditCard, faList, faPersonBiking, faRightFromBracket, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -24,6 +25,7 @@ const routes = [
     { path: '/price', component: PricePlansPage, name: 'prices' },
     { path: '/workout', component: WorkoutsPage, name: 'workouts' },
     { path: '/workout-create', component: CreateWorkoutPage, name: 'workout-create' },
+    { path: '/workout/:id', component: UpdateWorkoutPage, name: 'workout' },
     { path: '/login', component: LoginPage, name: 'login' },
     { path: '/', redirect: '/student', name: 'index' },
 ]
