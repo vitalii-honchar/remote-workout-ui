@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <page-template title="Prices Plan" :with-add-button="true" @add-clicked="handleAddPricePlan">
+  <page-template title="Prices Plans" :with-add-button="true" @add-clicked="handleAddPricePlan">
     <list-items
         :headers="{name: 'Plan', price: 'Price $', workouts: 'Workouts'}"
         :values="pricePlans"

@@ -4,7 +4,7 @@ import ListItems from "../../lib/ListItems.vue";
 import {inject} from "vue"
 
 export default {
-  name: "WorkoutsPage",
+  name: "StudentsPage",
   components: {
     PageTemplate,
     ListItems
@@ -12,28 +12,28 @@ export default {
 
   data() {
     return {
-      workouts: []
+      students: []
     }
   },
 
   async created() {
-    const workoutService = inject('workoutService')
-    this.workouts = await workoutService.getWorkouts()
+    const studentService = inject('studentService')
+    this.students = await studentService.getStudents()
   },
 
   methods: {
 
-    handleAddWorkout() {
+    handleAddStudent() {
       this.$router.push({
-        name: 'workout-create'
+        name: 'student-create'
       })
     },
 
-    editParameters(workout) {
+    editParameters(student) {
       this.$router.push({
-        name: 'workout',
+        name: 'student',
         params: {
-          id: workout.id
+          id: student.id
         }
       })
     }
@@ -42,10 +42,10 @@ export default {
 </script>
 
 <template>
-  <page-template title="Workouts" :with-add-button="true" @add-clicked="handleAddWorkout">
+  <page-template title="Students" :with-add-button="true" @add-clicked="handleAddStudent">
     <list-items
-        :headers="{name: 'Workout', description: 'Description'}"
-        :values="workouts"
+        :headers="{firstName: 'First Name', lastName: 'Last Name'}"
+        :values="students"
         @edit="editParameters"
     />
   </page-template>

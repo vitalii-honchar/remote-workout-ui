@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
-import StudentsPage from "@/components/page/StudentsPage";
+import StudentsPage from "@/components/page/student/StudentsPage";
 import PricePlansPage from "@/components/page/price/PricePlansPage";
 import UpdatePricePlanPage from "@/components/page/price/UpdatePricePlanPage";
 import CreatePricePlanPage from "@/components/page/price/CreatePricePlanPage";
@@ -17,6 +17,7 @@ import createApiService from "@/service/backend/api-service.mjs"
 import LoginPage from "@/components/page/LoginPage";
 import pricePlanService from "@/service/frontend/price-plan-service.mjs"
 import workoutService from "@/service/frontend/workout-service.mjs"
+import studentService from "@/service/frontend/student-service.mjs"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'student' },
@@ -47,4 +48,5 @@ createApp(App)
     .provide('authenticationService', authorizationService(authorizationStore, apiService))
     .provide('pricePlanService', pricePlanService(apiService))
     .provide('workoutService', workoutService(apiService))
+    .provide('studentService', studentService(apiService))
     .mount('#app')
