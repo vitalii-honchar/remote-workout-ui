@@ -26,12 +26,12 @@ const studentService = (apiService) => {
         },
 
         async deleteStudent(student) {
-            return apiService.delete(`${WORKOUT_ENDPOINT}/${encodeURIComponent(student.id)}`)
+            return apiService.delete(`${STUDENT_ENDPOINT}/${encodeURIComponent(student.id)}`)
         },
 
         async updateStudent(student) {
             student.validate()
-            return apiService.post(`${WORKOUT_ENDPOINT}/${encodeURIComponent(student.id)}`, student)
+            return apiService.post(`${STUDENT_ENDPOINT}/${encodeURIComponent(student.id)}`, student)
         }
     }
 }

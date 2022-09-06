@@ -19,10 +19,12 @@ import pricePlanService from "@/service/frontend/price-plan-service.mjs"
 import workoutService from "@/service/frontend/workout-service.mjs"
 import studentService from "@/service/frontend/student-service.mjs"
 import CreateStudentPage from "@/components/page/student/CreateStudentPage"
+import UpdateStudentPage from "@/components/page/student/UpdateStudentPage"
 
 const routes = [
     { path: '/student', component: StudentsPage, name: 'students' },
     { path: '/student-create', component: CreateStudentPage, name: 'student-create' },
+    { path: '/student/:id', component: UpdateStudentPage, name: 'student' },
     { path: '/price/:name', component: UpdatePricePlanPage, name: 'price' },
     { path: '/price-create', component: CreatePricePlanPage, name: 'price-create' },
     { path: '/price', component: PricePlansPage, name: 'prices' },
