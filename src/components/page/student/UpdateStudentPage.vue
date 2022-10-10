@@ -3,12 +3,14 @@ import BasePageTemplate from "@/components/lib/BasePageTemplate"
 import RowTemplate from "@/components/lib/RowTemplate"
 import CardTemplate from "@/components/lib/CardTemplate"
 import FormTemplate from "@/components/lib/form/FormTemplate"
+import StudentWorkoutInput from "@/components/page/student/StudentWorkoutInput"
 import {inject} from "vue"
 import Student from "@/domain/student.mjs"
 
 export default {
   name: "UpdateStudentPage",
   components: {
+    StudentWorkoutInput,
     FormTemplate,
     BasePageTemplate,
     RowTemplate,
@@ -99,27 +101,7 @@ export default {
     </row-template>
     <row-template>
       <card-template title="Student's workouts">
-        <form-template
-            @submitted="handleSaveStudent"
-            @deleted="handleDeleteStudent"
-            submit-button-name="Save"
-            :error-message="errorMessage"
-            :success-message="successMessage"
-            :key="this.student"
-        >
-          <div class="form-group">
-            <label class="form-control-label">Workout 1</label>
-            <input type="text" class="form-control" v-model="student.firstName"/>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label">Workout 2</label>
-            <input type="text" class="form-control" v-model="student.lastName"/>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label">Workout 3</label>
-            <input type="text" class="form-control" v-model="student.lastName"/>
-          </div>
-        </form-template>
+        <student-workout-input :student="student" />
       </card-template>
     </row-template>
   </base-page-template>
