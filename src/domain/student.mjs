@@ -13,7 +13,7 @@ class Student {
 
     static createEmpty() {
         return new Student(null, null, null, null,
-            null, [ScheduledWorkout.createEmpty()])
+            null, [])
     }
 
     toString() {
@@ -28,8 +28,13 @@ class Student {
         if (!this.lastName) {
             throw new ValidationError("Last name must be specified")
         }
-        if (this.id != null && !this.pricePlan) {
-            throw new ValidationError("Price plan must be specified")
+        if (this.id != null) {
+            if (!this.pricePlan) {
+                throw new ValidationError("Price plan must be specified")
+            }
+            if (!this.workouts) {
+                throw new ValidationError("Workouts must be specified")
+            }
         }
     }
 
@@ -47,10 +52,6 @@ class WorkoutPricePlan {
         this.name = name
     }
 
-    static createEmpty() {
-        return new WorkoutPricePlan(null, null, null)
-    }
-
     toString() {
         return `WorkoutPricePlan(workouts=${this.workouts}, price=${this.price}, name=${this.name})`
     }
@@ -62,11 +63,7 @@ class ScheduledWorkout {
         this.workoutId = workoutId
         this.order = order
         this.scheduledTime = scheduledTime
-        this.sent = sent
-    }
-
-    static createEmpty() {
-        return new ScheduledWorkout(null, null, null, null)
+        this.sent = sent || false
     }
 
     toString() {
