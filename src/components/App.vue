@@ -6,6 +6,7 @@ import "perfect-scrollbar/dist/perfect-scrollbar"
 import "smooth-scrollbar/dist/smooth-scrollbar"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
+import "@/assets/style.css"
 import { RouterView } from 'vue-router'
 import {inject} from "vue";
 
