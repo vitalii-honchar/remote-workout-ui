@@ -4,10 +4,11 @@ import Student from "@/domain/student.mjs"
 import {inject} from "vue"
 
 export default {
-  name: "StudentWorkoutInput",
+  name: "StudentInput",
   components: {
     FormTemplate
   },
+
   props: {
     id: String
   },
@@ -27,11 +28,21 @@ export default {
 
   methods: {
 
-    async handleSaveStudentWorkouts() {
+    async handleSaveStudent() {
       try {
         await this.studentService.updateStudent(this.student)
-        this.successMessage = "Student's workouts were successfully updated"
+        this.successMessage = "Student was successfully updated"
         this.errorMessage = null
+      } catch (e) {
+        this.successMessage = null
+        this.errorMessage = e.message
+      }
+    },
+
+    async handleDeleteStudent() {
+      try {
+        await this.studentService.deleteStudent(this.student)
+        this.$router.push({ name: 'students' })
       } catch (e) {
         this.successMessage = null
         this.errorMessage = e.message
@@ -43,14 +54,21 @@ export default {
 
 <template>
   <form-template
-      @submitted="handleSaveStudentWorkouts"
+      @submitted="handleSaveStudent"
+      @deleted="handleDeleteStudent"
       submit-button-name="Save"
+      delete-button-name="Delete"
       :error-message="errorMessage"
       :success-message="successMessage"
-      :key="student.workouts"
+      :key="this.student"
   >
-    <div class="form-group" v-for="workout in student.workouts" :key="workout.workoutId">
-      <div>{{JSON.stringify(workout)}}</div>
+    <div class="form-group">
+      <label class="form-control-label">First Name</label>
+      <input type="text" class="form-control" v-model="student.firstName"/>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Last Name</label>
+      <input type="text" class="form-control" v-model="student.lastName"/>
     </div>
   </form-template>
 </template>

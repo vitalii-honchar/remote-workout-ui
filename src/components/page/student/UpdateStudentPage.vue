@@ -2,16 +2,16 @@
 import BasePageTemplate from "@/components/lib/BasePageTemplate"
 import RowTemplate from "@/components/lib/RowTemplate"
 import CardTemplate from "@/components/lib/CardTemplate"
-import FormTemplate from "@/components/lib/form/FormTemplate"
 import StudentWorkoutInput from "@/components/page/student/StudentWorkoutInput"
-import {inject} from "vue"
-import Student from "@/domain/student.mjs"
+import StudentInput from "@/components/page/student/StudentInput"
+import StudentStatistics from "@/components/page/student/StudentStatistics"
 
 export default {
   name: "UpdateStudentPage",
   components: {
+    StudentStatistics,
     StudentWorkoutInput,
-    FormTemplate,
+    StudentInput,
     BasePageTemplate,
     RowTemplate,
     CardTemplate
@@ -19,43 +19,7 @@ export default {
 
   data() {
     return {
-      student: Student.createEmpty(),
-      errorMessage: null,
-      successMessage: null
-    }
-  },
-
-  async created() {
-    this.studentService = inject('studentService')
-    this.student = await this.studentService.getStudent(this.$route.params.id)
-    console.dir({
-      msg: "Received student",
-      student: this.student
-    })
-  },
-
-  methods: {
-
-    async handleSaveStudent() {
-      try {
-        await this.studentService.updateStudent(this.student)
-        this.successMessage = "Student was successfully updated"
-        this.errorMessage = null
-      } catch (e) {
-        console.info(e)
-        this.successMessage = null
-        this.errorMessage = e.message
-      }
-    },
-
-    async handleDeleteStudent() {
-      try {
-        await this.studentService.deleteStudent(this.student)
-        this.$router.push({ name: 'students' })
-      } catch (e) {
-        this.successMessage = null
-        this.errorMessage = e.message
-      }
+      studentId: this.$route.params.id
     }
   }
 }
@@ -66,42 +30,18 @@ export default {
     <row-template>
       <div class="col-md-8 pe-1">
         <card-template title="Student">
-          <form-template
-              @submitted="handleSaveStudent"
-              @deleted="handleDeleteStudent"
-              submit-button-name="Save"
-              delete-button-name="Delete"
-              :error-message="errorMessage"
-              :success-message="successMessage"
-              :key="this.student"
-          >
-            <div class="form-group">
-              <label class="form-control-label">First Name</label>
-              <input type="text" class="form-control" v-model="student.firstName"/>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label">Last Name</label>
-              <input type="text" class="form-control" v-model="student.lastName"/>
-            </div>
-          </form-template>
+          <student-input :id="studentId"/>
         </card-template>
       </div>
       <div class="col-md-4 ps-1">
         <card-template>
-          <div class="d-flex h-100 align-items-center justify-content-center flex-column">
-            <div>
-              <h2>{{student.pricePlan.price}} UAH</h2>
-            </div>
-            <div>
-              <h2>{{student.getCompletedWorkouts()}} / {{student.pricePlan.workouts}} workouts</h2>
-            </div>
-          </div>
+          <student-statistics :id="studentId" />
         </card-template>
       </div>
     </row-template>
     <row-template>
       <card-template title="Student's workouts">
-        <student-workout-input :student="student" />
+        <student-workout-input :id="studentId" />
       </card-template>
     </row-template>
   </base-page-template>
