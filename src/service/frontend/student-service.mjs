@@ -6,9 +6,13 @@ const STUDENT_ENDPOINT = 'student'
 const studentService = (apiService) => {
 
     const createWorkoutPricePlan = (response) => {
+        if (!response.pricePlan) {
+            return WorkoutPricePlan.createEmpty()
+        }
         return new WorkoutPricePlan(
-            response.pricePlan ? response.pricePlan.workouts : null,
-            response.pricePlan ? response.pricePlan.price : null
+            response.pricePlan.workouts,
+            response.pricePlan.price,
+            response.pricePlan.name
         )
     }
 

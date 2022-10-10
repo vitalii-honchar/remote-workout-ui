@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       student: Student.createEmpty(),
+      pricePlans: [],
       errorMessage: null,
       successMessage: null
     }
@@ -23,7 +24,9 @@ export default {
 
   async created() {
     this.studentService = inject('studentService')
+    this.pricePlanService = inject('pricePlanService')
     this.student = await this.studentService.getStudent(this.id)
+    this.pricePlans = await this.pricePlanService.getPricePlans()
   },
 
   methods: {
@@ -47,6 +50,10 @@ export default {
         this.successMessage = null
         this.errorMessage = e.message
       }
+    },
+
+    handlePricePlanChange(event) {
+      console.dir(event)
     }
   }
 }
@@ -69,6 +76,18 @@ export default {
     <div class="form-group">
       <label class="form-control-label">Last Name</label>
       <input type="text" class="form-control" v-model="student.lastName"/>
+    </div>
+    <div class="form-group">
+      <label class="form-control-label">Price Plan</label>
+      <select @change="handlePricePlanChange" class="form-select" aria-label="Select price plan" >
+        <option
+            value="{{pricePlan}}"
+            v-for="pricePlan in pricePlans" :key="pricePlan.name"
+            :selected="student.pricePlan.name === pricePlan.name"
+        >
+          {{pricePlan.name}}
+        </option>
+      </select>
     </div>
   </form-template>
 </template>

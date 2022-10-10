@@ -38,17 +38,18 @@ class Student {
 
 class WorkoutPricePlan {
 
-    constructor(workouts, price) {
+    constructor(workouts, price, name) {
         this.workouts = workouts
         this.price = price
+        this.name = name
     }
 
     static createEmpty() {
-        return new WorkoutPricePlan(null, null)
+        return new WorkoutPricePlan(null, null, null)
     }
 
     toString() {
-        return `WorkoutPricePlan(workouts=${this.workouts}, price=${this.price})`
+        return `WorkoutPricePlan(workouts=${this.workouts}, price=${this.price}, name=${this.name})`
     }
 }
 
