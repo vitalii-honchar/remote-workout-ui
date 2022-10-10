@@ -14,6 +14,8 @@ export default {
     id: String
   },
 
+  emits: ["saved"],
+
   data() {
     return {
       student: Student.createEmpty(),
@@ -28,7 +30,6 @@ export default {
     this.pricePlanService = inject('pricePlanService')
     this.student = await this.studentService.getStudent(this.id)
     this.pricePlans = await this.pricePlanService.getPricePlans()
-    console.dir(this.student)
   },
 
   methods: {
@@ -38,6 +39,7 @@ export default {
         await this.studentService.updateStudent(this.student)
         this.successMessage = "Student was successfully updated"
         this.errorMessage = null
+        this.$emit('saved', this.student)
       } catch (e) {
         this.successMessage = null
         this.errorMessage = e.message

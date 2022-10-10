@@ -28,7 +28,7 @@ class Student {
         if (!this.lastName) {
             throw new ValidationError("Last name must be specified")
         }
-        if (!this.pricePlan) {
+        if (this.id != null && !this.pricePlan) {
             throw new ValidationError("Price plan must be specified")
         }
     }
