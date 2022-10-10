@@ -7,7 +7,7 @@ const studentService = (apiService) => {
 
     const createWorkoutPricePlan = (response) => {
         if (!response.pricePlan) {
-            return WorkoutPricePlan.createEmpty()
+            return null
         }
         return new WorkoutPricePlan(
             response.pricePlan.workouts,

@@ -13,7 +13,7 @@ class Student {
 
     static createEmpty() {
         return new Student(null, null, null, null,
-            WorkoutPricePlan.createEmpty(), [ScheduledWorkout.createEmpty()])
+            null, [ScheduledWorkout.createEmpty()])
     }
 
     toString() {
@@ -27,6 +27,9 @@ class Student {
         }
         if (!this.lastName) {
             throw new ValidationError("Last name must be specified")
+        }
+        if (!this.pricePlan) {
+            throw new ValidationError("Price plan must be specified")
         }
     }
 
